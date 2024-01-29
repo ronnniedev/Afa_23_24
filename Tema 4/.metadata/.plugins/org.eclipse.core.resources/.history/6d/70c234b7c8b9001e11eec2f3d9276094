@@ -1,0 +1,17 @@
+package ejercicio2;
+
+public class Libreria {
+
+	public static int calcularIMC(double peso, double altura) {
+		
+		double imc = 0;
+		
+		//imc = peso/ Math.pow(2, imc);
+		
+		System.out.println(Math.pow(2, 4));
+		
+		
+		return -1;
+	}
+
+}

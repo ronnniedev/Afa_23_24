@@ -1,0 +1,54 @@
+package ejercicio2;
+
+public class Libreria {
+	
+	/** Calcula el IMC en base de peso y altura previamente introducidos, indica si este es correcto o no.
+	 * @param peso
+	 * @param altura
+	 * @return entero
+	 */
+	
+	public static int calcularIMC(double peso, double altura) {
+		
+		double imc = 0;
+		
+		imc = peso/ Math.pow(2, imc);
+		
+		if (imc >= 20 && imc <= 25) return 0;
+		else if (imc > 25) return 1;
+		
+		
+		return -1;
+	}
+	/** Verifica si el usuario es mayor de edad
+	 * @param edad
+	 * @return booleano
+	 */
+	public static boolean esMayorDeEdad (int edad) {
+		
+		if (edad >= 18) return true;
+		else return false;
+		
+	}
+	/** Comprobar si la letra de sexo introducido es correcto
+	 * @param sexo
+	 * @return caracter
+	 */
+	public static char comprobarSexo (char sexo) {
+		
+		if (sexo == 'F' || sexo == 'H') return sexo;
+		else return 'H';
+		
+	}
+	/** genera un numero entre el max y min especificado
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	public static int generaNumeros (int min,int max) {
+		
+		return (int) Math.random()*max+min;
+		
+	}
+
+}

@@ -1,0 +1,19 @@
+package ficheros;
+
+public class barcos {
+
+	public static void main(String[] args) {
+		
+		
+		int m [][] = Libreria.generarMatrizInt(7, 7, 0, 0);
+		
+		Libreria.mostrarMatrizV2(m);
+
+		System.out.println("Escrtibe la coordenada i donde meteras el barco: ");
+		int i = 
+		
+		Libreria.insertarBarco(m,i,j,tamBarco);
+	
+	}
+
+}

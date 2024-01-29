@@ -1,0 +1,17 @@
+package ejercicio2;
+
+public class Libreria {
+	
+	/** genera un numero entre el max y min especificado
+	 * @param min
+	 * @param max
+	 * @return entero
+	 */
+	public static int generaNumeros (int min,int max) {
+		int num = (int) Math.random()*max+min;
+		
+		return (int) Math.random()*max+min;
+		
+	}
+
+}

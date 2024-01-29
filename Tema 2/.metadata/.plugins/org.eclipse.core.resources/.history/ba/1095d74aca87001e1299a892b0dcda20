@@ -1,0 +1,80 @@
+package ficheros;
+
+import java.util.Scanner;
+
+/**
+ * Comprueba si el numero es valido
+ * @param dni : entero
+ * @return boolean
+ */
+public class Libreria {
+	static Scanner keyboard = new Scanner(System.in);
+	public static boolean comprobarDni(int dni) {
+		
+		boolean comprobacion = false;
+		
+		
+		if (dni <= 99999999 && dni > 9999999) comprobacion = true;
+		
+		return comprobacion;
+
+	}/**
+	 * Indica a que letra pertenece el DNI introducido
+	 * @param dni : entero
+	 * @return character
+	 */
+	public static char letraDni (int dni) {
+		char letra ;
+		
+		int resul = dni%23;
+		
+		if (resul == 0) letra = 't';
+		else if (resul == 1) letra = 'r';
+		else if (resul == 2) letra = 'w';
+		else if (resul == 3) letra = 'a';
+		else if (resul == 4) letra = 'g';
+		else if (resul == 5) letra = 'm';
+		else if (resul == 6) letra = 'y';
+		else if (resul == 7) letra = 'f';
+		else if (resul == 8) letra = 'p';
+		else if (resul == 9) letra = 'd';
+		else if (resul == 10) letra = 'x';
+		else if (resul == 11) letra = 'b';
+		else if (resul == 12) letra = 'n';
+		else if (resul == 13) letra = 'j';
+		else if (resul == 14) letra = 'z';
+		else if (resul == 15) letra = 's';
+		else if (resul == 16) letra = 'q';
+		else if (resul == 17) letra = 'v';
+		else if (resul == 18) letra = 'h';
+		else if (resul == 19) letra = 'l';
+		else if (resul == 20) letra = 'c';
+		else if (resul == 21) letra = 'k';
+		else letra = 'e';
+		
+		return letra;
+	}
+	/**
+	 * Comprueba si la letra introducida por el usuario y el numero son concordantes
+	 * @param letraDni : char
+	 * @param dni : entero
+	 * @return boolean
+	 */
+	public static boolean dniValido (char letraDni, int dni) {
+		
+		char letra = letraDni (dni); //llamamos a la funcion para determinar que letra es el entero del dni
+		boolean iguales = false;
+		
+		
+		if (letra == letraDni) {
+			
+			iguales = true;
+			
+		}
+		
+		
+		return iguales;
+			
+	}
+
+}

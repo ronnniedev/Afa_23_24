@@ -1,0 +1,14 @@
+package ficheros;
+
+public class Ejercicio2 {
+
+	public static void main(String[] args) {
+		
+		
+		
+		
+		Libreria.mostrarAviso(int[][]vuelos)
+
+	}
+
+}

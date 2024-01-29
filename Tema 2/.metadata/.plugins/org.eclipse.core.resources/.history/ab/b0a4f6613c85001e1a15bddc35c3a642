@@ -1,0 +1,46 @@
+package ficheros;
+
+import java.util.Scanner;
+
+/**
+ * Comprueba si el numero es valido
+ * @param dni : entero
+ * @return boolean
+ */
+public class Libreria {
+	static Scanner keyboard = new Scanner(System.in);
+	public static boolean comprobarDni(int dni) {
+		
+		boolean comprobacion = false;
+		
+		
+		if (dni <= 99999999 && dni > 9999999) comprobacion = true;
+		
+		System.out.println("-" + comprobacion);
+		return comprobacion;
+
+	}
+	
+	public static char letraDni (int dni); {
+		
+		
+		int resul = dni%23;
+		
+		
+		
+	}
+	public static boolean dniValido (char letra , char letraDni) {
+		
+		boolean iguales = false;
+		
+		if (letra == letraDni) {
+			
+			iguales = true;
+			
+		}
+		
+		return iguales;
+			
+	}
+
+}

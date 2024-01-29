@@ -1,0 +1,36 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class Ejercicio1 {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		/* Actividad 1
+		 * Realiza un programa modular que calcule la superficie y el perímetro
+		 * de un cuadrado cuyo lado pediremos por teclado.
+		 */
+		System.out.println("Lado : ");
+		int l = keyboard.nextInt();
+		
+		calcularArea(l);
+		calcularPerimetro(l);
+		
+	}
+	/*
+	 * necesita: el valor del lado
+	 * produce: el area del cuadrado, y muestra el mensaje
+	 */
+	public static void calcularArea(int lado) {
+		int area = lado*lado;
+		System.out.println("El area es " + area );
+	}
+	/*
+	 * necesita: el lado de un cuadrado
+	 * produce: calcula el perimetro de un cuadrado y muestra mensaje
+	 */
+	public static void calcularPerimetro (int lado) {
+		int perimetro = lado*4;
+		System.out.println("El perimetro es " + perimetro );
+		
+	}
+}

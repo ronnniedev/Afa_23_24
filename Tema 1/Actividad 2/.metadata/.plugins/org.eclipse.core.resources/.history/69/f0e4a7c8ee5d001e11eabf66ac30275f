@@ -1,0 +1,33 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class Ejercicio15 {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		/*Actividad 15
+		 * Calcula cual es el mayor, mediano y menor de tres números que se
+		 * piden por teclado. 
+		 */
+
+		double numero1,numero2,numero3;
+		
+		System.out.println("Introduzca el primer numero: "); //introducimos los valores 
+		numero1 = keyboard.nextInt();
+		
+		System.out.println("Introduzca el segundo numero: ");
+		numero2 = keyboard.nextInt();
+		
+		System.out.println("Introduzca el tercer numero: ");
+		numero3 = keyboard.nextInt();
+		
+		if (numero1 > numero2) {
+			if (numero1 > numero3) {
+				System.out.println("El primer numero es el mayor");
+			}
+		}
+		
+		
+	}
+
+}

@@ -1,0 +1,16 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class Ejercicio4 {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		
+		
+		int m [][]=Libreria.generarTablero();
+		Libreria.mostrarTablero(m);
+
+	}
+
+}

@@ -1,0 +1,37 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class Ejercicio7 {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		/* Actividad 7
+		 * Implementar un programa modular para realizar la conversión de
+		 * grados Centígrados a grados Farenheit.
+		 */
+		
+		System.out.println("Por favor escriba la conversion que quiera realizar a continuacion: \n");
+		System.out.println("1- Centigrados a Farenheit");
+		System.out.println("2- Farenheit a Centigrados");
+		int sel = keyboard.nextInt();
+		
+		
+		if (sel == 1) centaFar();
+		else faraCent();
+
+	}
+	public static void centaFar () {
+		
+		System.out.println(" Introduzca los grados centigrados : ");
+		double cent = keyboard.nextDouble();
+		
+		
+	}
+	public static void faraCent () {
+		
+		System.out.println(" Introduzca los grados Farenheit :");
+		double far = keyboard.nextDouble();
+		
+		
+	}
+}

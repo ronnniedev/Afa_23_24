@@ -1,0 +1,26 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class EjemploBucle3 {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		int cont = 0;
+		int numero;
+		
+		
+		
+		while (cont <= 5) {
+			
+			System.out.println("Introduce un numero: ");
+			numero = keyboard.nextInt();
+			System.out.println("El numero es: " + numero);
+			
+			//avanze del bucle
+			cont++;
+		}
+
+	}
+
+}

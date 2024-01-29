@@ -1,0 +1,8 @@
+INDEX VERSION 1.134+C:\Users\mario\OneDrive\Desktop\Programas\Tema 1\Ejemplos\.metadata\.plugins\org.eclipse.jdt.core
+72758655.index
+1937121101.index
+2334282574.index
+2660015139.index
+1865797976.index
+1642687062.index
+722939095.index

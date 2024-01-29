@@ -1,0 +1,25 @@
+package ejercicio3;
+
+public class Ejercicio3 {
+
+	
+	public static void main(String[] args) {
+		String contraseña = "";
+		char letra = 'A';
+		int longitud = 8;
+		
+		String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		
+		for (int i = 0; i < longitud; i++) {
+			
+			
+			letra = caracteres.charAt(Libreria.generaNumeros(0, caracteres.length()-1));
+			
+			contraseña = contraseña + letra;
+		}
+		
+		System.out.println(contraseña);
+		
+		
+	}
+}

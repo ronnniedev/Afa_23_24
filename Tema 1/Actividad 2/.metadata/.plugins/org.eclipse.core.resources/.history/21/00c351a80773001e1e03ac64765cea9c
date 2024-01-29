@@ -1,0 +1,32 @@
+package clase;
+
+import java.util.Scanner;
+
+public class Calculadordeclaves {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		// Escribir un numero entero y decir cuantas de las cifras que la componen son pares
+
+		int num,numMemoria,comprobadorCifras,comprobador,pares,impares;
+		
+		System.out.println("Escribe un numero: ");
+		num = keyboard.nextInt();
+		
+		numMemoria = num;
+		comprobadorCifras = 0;
+		comprobador = 1;
+		pares = 0;
+		impares = 0;
+		
+		while (numMemoria >= comprobador) { //contamos las cifras para saber cuantas vamos a contar
+			
+			comprobadorCifras++;
+			comprobador = 10 * comprobador;
+				
+		}
+
+		
+		
+	}
+
+}

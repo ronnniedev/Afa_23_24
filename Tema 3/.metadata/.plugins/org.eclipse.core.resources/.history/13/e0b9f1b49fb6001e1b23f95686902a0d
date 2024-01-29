@@ -1,0 +1,17 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class Ejercicio1 {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		int v [] = {4,6,9,3,27,10,15,2,14,12};
+		
+		Libreria.mostrarVector(v);
+		Libreria.mostrarPuntosLuz(v);
+		
+
+	}
+
+}

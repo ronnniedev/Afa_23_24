@@ -1,0 +1,14 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class Ejercicio1 {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		int m [][] = Libreria.generarMatrizInt(10, 10, 0, 10);
+		Libreria.mostrarMatriz(m);
+
+	}
+
+}

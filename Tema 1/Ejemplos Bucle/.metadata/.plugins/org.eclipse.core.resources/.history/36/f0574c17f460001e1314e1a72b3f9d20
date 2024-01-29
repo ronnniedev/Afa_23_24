@@ -1,0 +1,21 @@
+package ficheros;
+
+public class EjemploBucle2 {
+
+	public static void main(String[] args) {
+		
+		int cont = 1;
+		int cont2 = 1;
+		
+		while (cont >= 50) {
+			System.out.println("5 *" + cont2 + " = " + ( cont ));
+			
+			//condicion de cierre de bucle
+			cont *= 5;
+			cont2 ++;
+			
+		}
+
+	}
+
+}

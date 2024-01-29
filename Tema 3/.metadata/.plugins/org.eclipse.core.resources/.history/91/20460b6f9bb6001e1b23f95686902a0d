@@ -1,0 +1,95 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class Libreria {
+	static Scanner keyboard = new Scanner(System.in);
+	
+	/**
+	 * funcion que lee los valores de un vector por teclado
+	 * @param v vector enteros
+	 */
+	public static void leerVector(int v[]) {
+		for (int i=0;i<v.length;i++) {
+			System.out.println("["+i+"]");
+			v[i]=keyboard.nextInt();
+		}
+	}
+	
+	/**
+	 * genera un vector con parametros aleatorios entre un min y un max
+	 * @param tam entero
+	 * @param min entero
+	 * @param max entero
+	 */
+	public static int[] generaVector(int tam ,int min, int max) {
+		
+		int v [] = new int [tam];
+		
+		for (int i = 0; i < v.length; i++) {
+			v[i] = (int) ((Math.random()*max)+min);
+		}
+		
+		return v;
+	}
+	/**
+	 * muestra el contenido del vector
+	 * @param v : vector de enteros
+	 */
+	public static void mostrarVector(int v []) {
+		
+		for (int i = 0; i < v.length; i++) {
+			
+			System.out.println("[" + i + "] = " + v[i]);
+			
+			
+		}
+	
+	}
+	/** 
+	 * Muestra el contenido de una matriz
+	 * @param m : matriz de enteros
+	 * 
+	 */
+	public static void mostrarMatriz (int [][] m) {
+		
+		System.out.println("------------->MostrarMatriz<-------------\n");
+		
+		for (int i = 0; i < m.length ; i++) {
+			
+			for (int j = 0; j < m[0].length ; j++) {
+				if (m[i][j] > 10) {
+					System.out.print(m[i][j] + " ");
+				}else System.out.print(m[i][j] + "  ");
+				
+			}
+			System.out.println();
+		}
+		System.out.println();
+		
+		
+	}
+	/**
+	 * Genera una matrix de enteros a partir de las dimensiones de la misma , su minimo y maximo.
+	 * @param filas entero
+	 * @param columnas entero
+	 * @param min entero
+	 * @param max entero
+	 * @return matriz de enteros
+	 */
+	public static int [][] generarMatrizInt (int filas , int columnas ,int min, int max) {
+		
+		int m [][] = new int [filas] [columnas];
+		
+		for (int i = 0; i < m.length ; i++) {
+			for (int j = 0; j < m[0].length; j++) {
+				m [i][j] = (int) ((Math.random()*(max+1))+min);
+			}
+			
+		}	
+		return m;	
+	}
+	
+	
+
+}
