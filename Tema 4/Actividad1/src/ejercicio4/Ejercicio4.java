@@ -9,17 +9,24 @@ public class Ejercicio4 {
 		System.out.println("Dime la dimension de memoria: ");
 		int dim = keyboard.nextInt();
 		
+		while(dim < 5) {
+			dim++;
+		}
+		
 		Tienda tienda = new Tienda("Tienda Cuántica","Pepito Pérez",123456, dim);
 		char comando = 'a';
 		
+		tienda.inicializar();
+		
 		while (comando != 'o') {
 			
-			System.out.println("Bienvenido al sistema de almacenamiento de " + tienda.getNombre());
-			System.out.println("\n Los comandos que puedes usar son los siguientes: ");
-			System.out.println("\n-añadir: Añade una nueva marca y computador al almacen ");
-			System.out.println("-b : Buscar perfiles");
+			System.out.println("\nBienvenido al sistema de almacenamiento de " + tienda.getNombre());
+			System.out.println("\nLos comandos que puedes usar son los siguientes: ");
+			System.out.println("\n-a: Añade una nueva marca y computador al almacen ");
+			System.out.println("-b: Buscar perfiles");
 			System.out.println("-e: elimina un ordenador del almacen");
 			System.out.println("-v: visualiza los equipos almacenados");
+			System.out.println("-o: apagar el sistema ");
 			comando = keyboard.next().charAt(0);
 			
 			if (comando == 'a') {

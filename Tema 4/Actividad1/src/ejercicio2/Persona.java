@@ -40,7 +40,7 @@ public class Persona {
 		this.altura=0.0;
 	}
 	
-	/** Contructor con parametros
+	/** Constructor con parametros para persona
 	 * @param nombre
 	 * @param edad
 	 * @param sexo
@@ -232,9 +232,15 @@ public class Persona {
 	public void setAltura(double altura) {
 		this.altura = altura;
 	}
+	/** Metodo get para nombre de la clase persona
+	 * @return String
+	 */
 	public String getNombre() {
 		return nombre;
 	}
+	/** Metodo get para edad de la clase persona
+	 * @return entero
+	 */
 	public int getEdad() {
 		return edad;
 	}
