@@ -1,6 +1,6 @@
 package Ejer3;
 
-import java.util.Iterator;
+
 import java.util.Scanner;
 
 public class PruebaPassword {
@@ -15,7 +15,8 @@ public class PruebaPassword {
 		Password v[]=new Password[dim];
 		for (int i = 0; i < v.length; i++) {
 			v[i]=new Password(longitud);
-			System.out.println(v[i].toString());
+			System.out.println(v[i].getContraseña()+
+					" "+v[i].esFuerte());
 		}
 	}
 

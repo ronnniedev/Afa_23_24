@@ -70,7 +70,7 @@ public class Tienda {
 			
 		}
 		System.out.println("Pulsa cualquier tecla para continuar: ");
-		String cualquierTecla = keyboard.next();
+		// String cualquierTecla = keyboard.next();
 	}
 	
 	public void inicializar() {

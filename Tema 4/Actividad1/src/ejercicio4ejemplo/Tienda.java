@@ -1,9 +1,6 @@
 package ejercicio4ejemplo;
 
-import java.util.Iterator;
-
 public class Tienda {
-
 	private String nombre;
 	private String propietario;
 	private int numeroTributario;
