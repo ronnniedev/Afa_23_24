@@ -60,7 +60,7 @@ public class Polideportivo {
 		Pistas nuevoVector[] = new Pistas [nuevoTam];
 		
 		for (int i = 0; i < tam; i++) {
-			nuevoVector [i] = pistas [i];
+			nuevoVector [i] = pistas[i];
 		}
 		
 		int posNuevo = nuevoTam-1;

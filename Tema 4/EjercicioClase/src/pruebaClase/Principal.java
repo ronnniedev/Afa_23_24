@@ -2,8 +2,14 @@ package pruebaClase;
 
 import java.util.Scanner;
 
+/**
+ * @version 1.0
+ * @author Veronica Gonzalez
+ */
 public class Principal {
+	
 	static Scanner keyboard=new Scanner(System.in);
+	
 	public static void main(String[] args) {
 		
 		Hotel hotel = new Hotel ();
@@ -34,7 +40,6 @@ public class Principal {
 		// habitaciones
 		
 		hotel.listarHabitaciones();
-		
 		hotel.borrarHabitacion(3);
 		hotel.borrarHabitacion(11); //este dara un mensaje de error por no encontrarla
 		

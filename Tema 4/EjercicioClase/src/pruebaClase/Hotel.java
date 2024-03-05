@@ -1,5 +1,9 @@
 package pruebaClase;
 
+/**
+ * @author Veronica Gonzalez
+ * @version 1.0
+ */
 public class Hotel {
 
 	
@@ -8,7 +12,8 @@ public class Hotel {
 	private Habitacion reservas[];
 	private int numReservas;
 	
-	/** Contructor para clase Hotel
+	/** 
+	 * Contructor para clase Hotel
 	 */
 	public Hotel() {
 		
@@ -19,7 +24,8 @@ public class Hotel {
 		
 	}
 	
-	/** Metodo que añade una nueva habitacion al hotel
+	/** 
+	 * Metodo que añade una nueva habitacion al hotel
 	 * @param hab
 	 */
 	public void nuevaHabitacion(Habitacion hab) {
@@ -44,7 +50,8 @@ public class Hotel {
 		
 		
 	}
-	/** Metodo que lista las habitaciones del hotel
+	/** 
+	 * Metodo que lista las habitaciones del hotel
 	 */
 	public void listarHabitaciones () {
 		
@@ -57,7 +64,8 @@ public class Hotel {
 		}
 		
 	}
-	/** Metodo que te dice las habitaciones disponibles
+	/** 
+	 * Metodo que te dice las habitaciones disponibles
 	 */
 	public void habitacionesDisponibles () {
 		
@@ -72,7 +80,8 @@ public class Hotel {
 		}
 		
 	}
-	/** Metodo que obtiene el precio de la habitacion indicada y lo imprime
+	/** 
+	 * Metodo que obtiene el precio de la habitacion indicada y lo imprime
 	 * @param ide
 	 */
 	public void obtenerPrecio (int ide) {
@@ -93,13 +102,16 @@ public class Hotel {
 		}
 	
 		if (Encontrado == false) {
+			
 			System.out.println("No se ha encontrado dicha habitacion");
+			
 		}
 		
 		
 		
 	}
-	/** Metodo que borra la habitacion indicada
+	/** 
+	 * Metodo que borra la habitacion indicada
 	 * @param ide
 	 */
 	public void borrarHabitacion (int ide) {
@@ -111,11 +123,15 @@ public class Hotel {
 		for (int i = 0; i < numeroHabitaciones && Encontrado == false; i++) {
 			
 			if (h[i].getId() == ide) {
+				
 				System.out.println("Se ha borrado la habitacion " + ide);
 				Encontrado = true;
 				numeroHabitaciones--;
+				
 				for (int j = i; j < numeroHabitaciones; j++) {
+					
 					h[j] = h[j+1];
+					
 					
 				}
 				
@@ -124,13 +140,17 @@ public class Hotel {
 		}
 		
 		if (Encontrado == false) {
+			
 			System.out.println("No se ha encontrado dicha habitacion");
+			
 		}
 	}
-	/** Metodo que hace una reserva y lo incluye en un nuevo vector
+	/** 
+	 * Metodo que hace una reserva y lo incluye en un nuevo vector
 	 * @param ide
 	 */
 	public void hacerReserva(int ide) {
+		
 		boolean existe = buscarId(ide);
 		
 		
@@ -143,14 +163,17 @@ public class Hotel {
 				numReservas++;
 				
 			}else if (h[i].getId() == ide && h[i].isOcupado()) {
+				
 				System.out.println("Esa habitacion se encuentra ocupada");
+				
 			}
 			
 		}
 		
 		
 	}
-	/** Metodo que busca una id en el vector de habitaciones
+	/** 
+	 * Metodo que busca una id en el vector de habitaciones
 	 * @param ide
 	 * @return
 	 */
@@ -167,7 +190,8 @@ public class Hotel {
 		return false;
 		
 	}
-	/** Metodo que lista las habitaciones reservadas
+	/** 
+	 * Metodo que lista las habitaciones reservadas
 	 */
 	public void habitacionesReservadas() {
 		
