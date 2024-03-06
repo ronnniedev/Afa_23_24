@@ -87,8 +87,37 @@ public class ProductoEnAlmacen implements Crud{
 			
 		}
 		
+	}
+	public Producto sacarDeAlmacen(String tipo) {
+		Producto contenedor = null;
+	
+		for (int i = 0; i < p.length; i++) {
+			if (p[i].getTipo().compareTo(tipo)== 0) {
+				contenedor = p[i];
+				eliminar(i);
+				
+			}
+		}
 		
+		return contenedor;
+	}
+	
+	public void eliminar(int pos) {
+		int cont = 0;
+		System.out.println(p.length);
+		for (int i = pos; i < p.length; i++) {
+			cont ++;
+			System.out.println("pos" + i);
+			System.out.println(cont);
+			if(p[i+1] == null || i == 199) {
+				p[i] = null;
+				return;
+			}else{
+				p[i] = p[i+1];
+			}
+		}
 		
+		p[p.length-1] = null;
 	}
 	
 }

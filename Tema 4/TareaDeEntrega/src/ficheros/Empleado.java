@@ -6,7 +6,7 @@ package ficheros;
 public class Empleado extends Persona{
 
 	protected String id;
-	public static int numCreaciones = 0;
+	private static int numCreaciones = 0;
 	
 	/**
 	 * Metodo constructor de empleado de 7 parametros

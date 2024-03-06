@@ -23,7 +23,25 @@ public class PruebaMenu {
 			case 3:{
 				colegio.listarColegio();
 				break;
+			}
+			case 4:{
+				System.out.println("Nif a buscar :");
+				String nif = keyboard.next();
+				Persona p = colegio.buscarPersona(nif);
+				
+				if (p==null) {
+					System.out.println("Persona no encontrada");
+				}else {
+					System.out.println(p.toString());
 				}
+				break;
+			}
+			case 5:{
+				System.out.println("Nif a buscar :");
+				String nif = keyboard.next();
+				colegio.borrarPersona(nif);
+				break;
+			}
 			};
 			opcion=menu();
 			
@@ -99,5 +117,7 @@ public class PruebaMenu {
 		
 		
 	}
+	
+
 
 }

@@ -5,6 +5,7 @@ public class Principal {
 	public static void main(String[] args) {
 		
 		ProductoEnAlmacen a = new ProductoEnAlmacen();
+		Tienda t = new Tienda ();
 	
 		
 		Producto p1 = new Producto (0, 2, "Leche de soja", true);
@@ -32,6 +33,15 @@ public class Principal {
 		a.visualizar();
 		
 		a.visualizarContando(p.length);
+		
+		for (int i = 0; i < 6; i++) {
+			t.añadirProducto(p6, a);
+		}
+		
+		
+		t.visualizar();
+		
+		
 	
 		
 		

@@ -50,14 +50,15 @@ public class Pruebas {
 			case 7:{
 				prepararEliminacion(con1);	
 				break;
+			}default:{
+				System.out.println("Numero introducido no valido");
 			}
-			
 			}
 			
 			opcion = menu();
 		}
 		
-
+		System.out.println("SISTEMA APAGADO");
 
 	}
 	
@@ -131,6 +132,12 @@ public class Pruebas {
 		String gender = keyboard.next();
 		Genero genero = comprobarGenero(gender);
 		
+		while (genero == null) {
+			System.out.println("Genero introducino no valido introduzcalo de nuevo");
+			gender = keyboard.next();
+			genero = comprobarGenero(gender);
+		}
+		
 		System.out.println("Introduzca la edad del empleado: ");
 		int edad = keyboard.nextInt();
 		
@@ -179,7 +186,7 @@ public class Pruebas {
 	 * @param gender
 	 * @return
 	 */
-	private static Genero comprobarGenero(String gender) {
+	public static Genero comprobarGenero(String gender) {
 		
 		
 		if (gender == "HOMBRE") {
@@ -196,7 +203,7 @@ public class Pruebas {
 	 * Menu de listado de la opcion lista del menu padre
 	 * @param con
 	 */
-	private static void listar(Consigna con) {
+	public static void listar(Consigna con) {
 		int opcion = menuListado(con);
 		
 		while (opcion != 0) {
@@ -240,7 +247,7 @@ public class Pruebas {
 	 * @param con
 	 * @return
 	 */
-	private static int menuListado(Consigna con) {
+	public static int menuListado(Consigna con) {
 		int opcion = -1;
 		
 			System.out.println("----------Menu de listado de " + con.getNombre() + "----------------");
@@ -259,7 +266,7 @@ public class Pruebas {
 	 * Metodo que añade clientes a un vector dentro de la clase Pruebas
 	 * @param newC
 	 */
-	private static void añadirClientes(Cliente newC) {
+	public static void añadirClientes(Cliente newC) {
 		
 		int newTam = numClientes+1;
 		Cliente v[] = new Cliente[newTam];
@@ -278,7 +285,7 @@ public class Pruebas {
 	 * Metodo que visualiza los clientes del vector c de la clase Pruebas
 	 * @param con
 	 */
-	private static void visualizarClientes(Consigna con) {
+	public static void visualizarClientes(Consigna con) {
 		System.out.println("\n-----------Clientes de la consigna '" + con.getNombre() +"'------------");
 		
 		for (int i = 0; i < c.length; i++) {

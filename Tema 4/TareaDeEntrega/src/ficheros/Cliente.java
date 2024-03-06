@@ -6,7 +6,7 @@ package ficheros;
 public class Cliente extends Persona{
 	
 	protected String id;
-	public static int numCreaciones = 0;
+	private static int numCreaciones = 0;
 	
 	/**
 	 * Contructos de 7 parametros de la clase Persona

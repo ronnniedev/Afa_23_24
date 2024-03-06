@@ -8,6 +8,7 @@ public class Consignacion {
 	private Cliente c;
 	private int peso;
 	private String descripcion;
+	private final String FECHA_BASE = "Aun consignado";
 	private int numObjetos;
 	private String fechaConsignacion;
 	private String fechaSalida;
@@ -30,7 +31,7 @@ public class Consignacion {
 		this.descripcion = descripcion;
 		this.numObjetos = numObjetos;
 		this.fechaConsignacion = fechaConsignacion;
-		this.fechaSalida = "Aun consignado";
+		this.fechaSalida = FECHA_BASE;
 		numConsignaciones++;
 		this.id = crearIdentificacion();
 	}
