@@ -66,7 +66,7 @@ public class Pruebas {
 	 * Inicia los datos basicos para las baterias de pruebas
 	 * @param con
 	 */
-	private static void cargaDatos(Consigna con) {
+	public static void cargaDatos(Consigna con) {
 		
 		Empleado e1 = new Empleado("Diego","De los Rios", "58799021Q", 987654321,Genero.HOMBRE,21);
 		Empleado e2 = new Empleado("Maria","Remilgos", "84937023L", 638172937,"Jaimita@gmail.com",Genero.MUJER,19);
@@ -93,8 +93,7 @@ public class Pruebas {
 	 * Menu basico con las 8 opciones para el usuario, que debera escribir un numero para cada una de ellas
 	 * @return int : opcion
 	 */
-	private static int menu() {
-		
+	public static int menu() {
 		System.out.println("\n\n*******************");
 		System.out.println("1.- Insertar Empleado");
 		System.out.println("2.- Insertar Cliente");
@@ -111,7 +110,7 @@ public class Pruebas {
 	 * Pide los datos necesarios para la creacion de un objeto empleado
 	 * @param con 
 	 */
-	private static void prepararEmpleado(Consigna con) {
+	public static void prepararEmpleado(Consigna con) {
 		
 		System.out.println("Escriba el nombre del empleado:");
 		String nombre = keyboard.next();
@@ -150,7 +149,7 @@ public class Pruebas {
 		/**
 		 * Pide los datos necesarios para la creacion d eun objeto Cliente
 		 */
-		private static void prepararCliente() {
+		public static void prepararCliente() {
 		
 		System.out.println("Escriba el nombre del cliente:");
 		String nombre = keyboard.next();
@@ -171,6 +170,11 @@ public class Pruebas {
 		String gender = keyboard.next();
 		Genero genero = comprobarGenero(gender);
 		
+		while (genero == null) {
+			System.out.println("Genero introducino no valido introduzcalo de nuevo");
+			gender = keyboard.next();
+			genero = comprobarGenero(gender);
+		}
 		System.out.println("Introduzca la edad del cliente: ");
 		int edad = keyboard.nextInt();
 		
@@ -184,20 +188,20 @@ public class Pruebas {
 	/**
 	 * Recibe un String que distingue entre hombre y mujer para establecerlo como enumeracion de genero
 	 * @param gender
-	 * @return
+	 * @return Genero : genero
 	 */
 	public static Genero comprobarGenero(String gender) {
+		Genero genero = null;
 		
-		
-		if (gender == "HOMBRE") {
+		if (gender.compareTo("HOMBRE") == 0) {
 			
-			return Genero.HOMBRE;
-		}else if (gender == "MUJER"){
+			genero = Genero.HOMBRE;
+		}else if (gender.compareTo("MUJER") == 0){
 			
-			return Genero.MUJER;
+			genero = Genero.MUJER;
 		}
 		
-		return null;
+		return genero;
 	}
 	/**
 	 * Menu de listado de la opcion lista del menu padre
@@ -210,25 +214,25 @@ public class Pruebas {
 			switch (opcion) {
 			case 1:{
 				con.visualizarEmpleados();
-				System.out.println("\n\n Introduzca un caracter cualquiera para continuar: ");
+				System.out.println("\n\nIntroduzca un caracter cualquiera para continuar: ");
 				keyboard.next();
 				break;
 			}
 			case 2:{
 				con.visualizarConsignaciones();
-				System.out.println("\n\n Introduzca un caracter cualquiera para continuar: ");
+				System.out.println("\n\nIntroduzca un caracter cualquiera para continuar: ");
 				keyboard.next();
 				break;
 			}
 			case 3:{
 				visualizarClientes(con);
-				System.out.println("\n\n Introduzca un caracter cualquiera para continuar: ");
+				System.out.println("\n\nIntroduzca un caracter cualquiera para continuar: ");
 				keyboard.next();
 				break;
 				}
 			case 4:{
 				con.visualizarElementos();
-				System.out.println("\n\n Introduzca un caracter cualquiera para continuar: ");
+				System.out.println("\n\nIntroduzca un caracter cualquiera para continuar: ");
 				keyboard.next();
 				break;
 				}
@@ -249,11 +253,10 @@ public class Pruebas {
 	 */
 	public static int menuListado(Consigna con) {
 		int opcion = -1;
-		
-			System.out.println("----------Menu de listado de " + con.getNombre() + "----------------");
+			System.out.println("\n\n----------Menu de listado de " + con.getNombre() + "----------------");
 			System.out.println("\n*******************");
 			System.out.println("1.- Listar Empleados");
-			System.out.println("2.- Listar Consignas");
+			System.out.println("2.- Listar Consignaciones");
 			System.out.println("3.- Listar Clientes");
 			System.out.println("4.- Listar Todo");
 			System.out.println("0.- Salir ");
@@ -285,7 +288,8 @@ public class Pruebas {
 	 * Metodo que visualiza los clientes del vector c de la clase Pruebas
 	 * @param con
 	 */
-	public static void visualizarClientes(Consigna con) {
+	public static boolean visualizarClientes(Consigna con) {
+		boolean funciona = true;
 		System.out.println("\n-----------Clientes de la consigna '" + con.getNombre() +"'------------");
 		
 		for (int i = 0; i < c.length; i++) {
@@ -293,7 +297,7 @@ public class Pruebas {
 			
 		}
 		
-		
+		return funciona;
 	}
 	/**
 	 * Metodo que busca entre los tres tipos de objetos que contiene la consigna 
@@ -400,23 +404,35 @@ public class Pruebas {
 	 */
 	public static void prepararEliminacion(Consigna con) {
 		
-		System.out.println("A continuacion se le listara todos los datos de la consigna para que escoga "
+		System.out.println("\nA continuacion se le listara todos los datos de la consigna para que escoga "
 							+ "la id a eliminar");
+		
+		System.out.print("\n\n Cargando");
+		
+		Libreria.esperar(3);
+		
 		con.visualizarElementos();
 		
-		System.out.println("\n--------------------------CLIENTES REGISTRADOS-----------------------------");
+		
+		
+		
+		System.out.println("\n\n--------------------------CLIENTES REGISTRADOS-----------------------------");
 		visualizarClientes(con);
 		System.out.println("\n\n Nota: Recuerde, si elimina un cliente eso no significa que dejara de estar asociado a"
 							+ " su consignacion, para borrar todo rastro del cliente debera borrar "
 							+ "tambien la consignacion");
-		System.out.println("\n Introduzca la ID a eliminar: ");
+		System.out.println("\nIntroduzca la ID a eliminar: ");
 		String id = keyboard.next();
 		boolean encontrado = false;
 		
 		
 		if (localizarCliente(id) != null) {
 			encontrado = true;
-			System.out.println("Encontrado");
+			System.out.print("Buscando");
+			
+			Libreria.esperar(5);
+			
+			System.out.println("\n ¡POP!");
 			eliminarCliente(localizarCliente(id));
 		}
 		
@@ -432,10 +448,11 @@ public class Pruebas {
 	}
 	/**
 	 * Metodo que elimina un cliente previamente introducido y reajusta el vector
-	 * @param caEliminar
+	 * @param Cliente : caEliminar
+	 * @return encontrado: boolean
 	 */
-	public static void  eliminarCliente(Cliente caEliminar) {
-		
+	public static boolean eliminarCliente(Cliente caEliminar) {
+		boolean encontrado = true;
 		int pos = localizarPosCliente(caEliminar);
 		
 		numClientes--;
@@ -443,22 +460,14 @@ public class Pruebas {
 		System.out.println("ENCONTRADO: " + caEliminar.getId() + " sera eliminado");
 	
 		for (int i = 0 ; i < pos; i++) {
-			System.out.println(i);
 			v[i] = c[i];
 		}
 		for (int i = pos ; i < numClientes; i++) {
-			System.out.println(i);
 			v[i] = c[i+1];
 		}
 		
-		
-		for (int i = 0; i < v.length; i++) {
-			System.out.println(v[i].toString());
-			
-		}
-		
 		c = v;
-		
+		return encontrado;
 	}
 	/**
 	 * Metodo que devuelve la posicion donde se localiza el objeto cliente dentro del vector localizado en la clase

@@ -79,8 +79,9 @@ public class Cliente extends Persona{
 	 * Metodo toString de 8 parametros de la clase Cliente
 	 */
 	public String toString() {
-		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", telefono="
-				+ telefono + ", correo=" + correo + ", Genero=" + Genero + ", edad=" + edad + "]";
+		return "\n id=" + id + "\n nombre=" + nombre + "\n apellidos=" + apellidos + "\n nif=" + nif + "\n telefono="
+				+ telefono + "\n correo=" + correo + "\n Genero=" + Genero + "\n edad=" + edad 
+				+ "\n-------------------------------------------------";
 	}
 	
 	

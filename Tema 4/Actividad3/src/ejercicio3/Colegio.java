@@ -8,11 +8,25 @@ public class Colegio {
 		v=null;
 	}
 	
-	public void insertarPersona(Persona p) {
+	public int numPersona() {
+		if (v==null) {
+			return 0;
+		}
+		else {
+			return v.length;
+		}
+		
+	}
+	
+	public boolean insertarPersona(Persona p) {
 		if (v==null) {
 			v = new Persona[1];
 			v[0]=p;
+			return true;
 		}else {
+			if (buscarPersona(p.getNif())!=null) {
+				return false;
+			}
 			int newTam = v.length +1;
 			Persona vNuevo[] = new Persona[newTam];
 			for (int i = 0; i < v.length; i++) {
@@ -21,7 +35,7 @@ public class Colegio {
 			}
 			vNuevo[v.length] = p;
 			v = vNuevo;
-			
+			return true;
 			
 		}
 	}
