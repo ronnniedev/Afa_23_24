@@ -238,7 +238,7 @@ public class Consigna {
 	/**
 	 * Metodo que busca elementos dentro de los vectores de Consignaciones y Empleados de la clase Consigna
 	 * @param id
-	 * @return
+	 * @return boolean : encontrado
 	 */
 	public boolean buscarElementos(String id) {
 		boolean encontrado = false;
@@ -296,8 +296,9 @@ public class Consigna {
 	 * @param pos
 	 */
 	public void setFecha(int pos) {
-		System.out.println("Introduce la fecha de salida que quieras meterle a " + c[pos].getId());
+		
 		if (c[pos].getFechaSalida() == "Aun consignado") {
+			System.out.println("Introduce la fecha de salida que quieras meterle a " + c[pos].getId());
 			String FechaSalida = keyboard.next();
 			c[pos].setFechaSalida(FechaSalida);
 			System.out.println("Actualizada la fecha");

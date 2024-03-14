@@ -249,7 +249,7 @@ public class Pruebas {
 	/**
 	 * Menu interactivo apra usuario que define las funciones de listar de la Clase Pruebas
 	 * @param con
-	 * @return
+	 * @return int : opcion
 	 */
 	public static int menuListado(Consigna con) {
 		int opcion = -1;
@@ -326,7 +326,7 @@ public class Pruebas {
 	 * Metodo que muestra una clase Cliente a partir de una id introducida, devuelve un booleano indicando si ha sido
 	 * encontrada
 	 * @param id
-	 * @return
+	 * @return encontrado : boolean
 	 */
 	public static boolean buscarClientes(String id) {
 		boolean encontrado = false;
@@ -344,7 +344,7 @@ public class Pruebas {
 	/**
 	 * Metodo que retorna una clase cliente del vector de la clase pruebas
 	 * @param id
-	 * @return
+	 * @return Cliente
 	 */
 	public static Cliente localizarCliente(String id) {
 		
@@ -358,7 +358,7 @@ public class Pruebas {
 	}
 	/**
 	 * Metodo que pide los datos necesarios para una consignacion
-	 * @param con
+	 * @param con : Consigna
 	 */
 	public static void prepararConsignacion(Consigna con) {
 		
@@ -407,7 +407,7 @@ public class Pruebas {
 		System.out.println("\nA continuacion se le listara todos los datos de la consigna para que escoga "
 							+ "la id a eliminar");
 		
-		System.out.print("\n\n Cargando");
+
 		
 		Libreria.esperar(3);
 		
@@ -418,8 +418,8 @@ public class Pruebas {
 		
 		System.out.println("\n\n--------------------------CLIENTES REGISTRADOS-----------------------------");
 		visualizarClientes(con);
-		System.out.println("\n\n Nota: Recuerde, si elimina un cliente eso no significa que dejara de estar asociado a"
-							+ " su consignacion, para borrar todo rastro del cliente debera borrar "
+		System.out.println("\n\nNota: Recuerde, si elimina un cliente eso no significa que dejara de estar asociado a"
+							+ " su consignacion, para borrar \ntodo rastro del cliente debera borrar "
 							+ "tambien la consignacion");
 		System.out.println("\nIntroduzca la ID a eliminar: ");
 		String id = keyboard.next();
@@ -472,8 +472,8 @@ public class Pruebas {
 	/**
 	 * Metodo que devuelve la posicion donde se localiza el objeto cliente dentro del vector localizado en la clase
 	 * Pruebas
-	 * @param cBuscar
-	 * @return
+	 * @param CBuscar 
+	 * @return pos : int
 	 */
 	public static int localizarPosCliente(Cliente cBuscar) {
 		int pos = -1;

@@ -6,7 +6,7 @@ package ficheros;
 public class Empleado extends Persona{
 
 	protected String id;
-	private static int numCreaciones = 0;
+	private static int NUM_CREACIONES = 0;
 	
 	/**
 	 * Metodo constructor de empleado de 7 parametros
@@ -21,7 +21,7 @@ public class Empleado extends Persona{
 	public Empleado(String nombre, String apellidos, String nif, int telefono, String correo,Genero genero,
 			int edad) {
 		super(nombre, apellidos, nif, telefono, correo, genero, edad);
-		numCreaciones++;
+		NUM_CREACIONES++;
 		this.id = crearIdentificacion();
 		
 	}
@@ -37,7 +37,7 @@ public class Empleado extends Persona{
 	public Empleado(String nombre, String apellidos, String nif, int telefono,Genero genero,
 			int edad) {
 		super(nombre, apellidos, nif, telefono, genero, edad);
-		numCreaciones++;
+		NUM_CREACIONES++;
 		this.id = crearIdentificacion();
 		
 	}
@@ -62,7 +62,7 @@ public class Empleado extends Persona{
 	 */
 	protected String crearIdentificacion() {
 		
-		return "E" + numCreaciones;
+		return "E" + NUM_CREACIONES;
 	}
 	
 	/**

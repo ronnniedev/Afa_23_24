@@ -6,7 +6,7 @@ package ficheros;
 public class Cliente extends Persona{
 	
 	protected String id;
-	private static int numCreaciones = 0;
+	private static int NUM_CREACIONES = 0;
 	
 	/**
 	 * Contructos de 7 parametros de la clase Persona
@@ -21,7 +21,7 @@ public class Cliente extends Persona{
 	public Cliente(String nombre, String apellidos, String nif, int telefono, String correo, Genero genero,
 			int edad) {
 		super(nombre, apellidos, nif, telefono, correo, genero, edad);
-		numCreaciones++;
+		NUM_CREACIONES++;
 		this.id = crearIdentificacion();
 	}
 	
@@ -37,7 +37,7 @@ public class Cliente extends Persona{
 	public Cliente(String nombre, String apellidos, String nif, int telefono,Genero genero,
 			int edad) {
 		super(nombre, apellidos, nif, telefono, genero, edad);
-		numCreaciones++;
+		NUM_CREACIONES++;
 		this.id = crearIdentificacion();
 		
 	}
@@ -49,7 +49,7 @@ public class Cliente extends Persona{
 	 * @return the numCreaciones
 	 */
 	public static int getNumCreaciones() {
-		return numCreaciones;
+		return NUM_CREACIONES;
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class Cliente extends Persona{
 	 * Metodo que le asigna una identificacion a cada objeto de Cliente
 	 */
 	protected String crearIdentificacion() {
-		return "C" + numCreaciones;
+		return "C" + NUM_CREACIONES;
 	}
 
 	/**

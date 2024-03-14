@@ -12,7 +12,7 @@ public class Consignacion {
 	private int numObjetos;
 	private String fechaConsignacion;
 	private String fechaSalida;
-	protected static int numConsignaciones;
+	protected static int NUM_CONSIGNACIONES;
 	private String id;
 	
 	
@@ -23,7 +23,6 @@ public class Consignacion {
 	 * @param descripcion
 	 * @param numObjetos
 	 * @param fechaConsignacion
-	 * @param fechaSalida
 	 */
 	public Consignacion(Cliente c, int peso, String descripcion, int numObjetos, String fechaConsignacion) {
 		this.c = c;
@@ -32,7 +31,7 @@ public class Consignacion {
 		this.numObjetos = numObjetos;
 		this.fechaConsignacion = fechaConsignacion;
 		this.fechaSalida = FECHA_BASE;
-		numConsignaciones++;
+		NUM_CONSIGNACIONES++;
 		this.id = crearIdentificacion();
 	}
 
@@ -112,7 +111,7 @@ public class Consignacion {
 	 * @return
 	 */
 	public String crearIdentificacion() {
-	return "O" + numConsignaciones;
+	return "O" + NUM_CONSIGNACIONES;
 	}
 	
 	/**
