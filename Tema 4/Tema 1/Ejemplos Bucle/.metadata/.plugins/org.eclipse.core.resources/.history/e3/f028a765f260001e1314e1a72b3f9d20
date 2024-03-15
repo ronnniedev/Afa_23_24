@@ -1,0 +1,18 @@
+package ficheros;
+
+public class EjemploBucle2 {
+
+	public static void main(String[] args) {
+		
+		int cont = 1;
+		
+		while (cont <= 10) {
+			System.out.println("3 *" + cont + " = " + ( 3 * cont));
+			
+			cont ++;
+			
+		}
+
+	}
+
+}

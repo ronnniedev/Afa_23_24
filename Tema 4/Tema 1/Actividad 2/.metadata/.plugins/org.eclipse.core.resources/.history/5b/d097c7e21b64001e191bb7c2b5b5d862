@@ -1,0 +1,41 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class Ejercicio12b {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		/*hacer el ejercicio 12 pero con un while
+		 * 
+		 * 
+		 */
+		
+		int numero;
+		int cont;
+		
+		System.out.println("Introduzca un numero: "); //introducimos los valores 
+		cont = keyboard.nextInt(); //almaceno el primer numero en cont
+		System.out.println("Introduzca un numero: ");		
+		numero = keyboard.nextInt(); //almaceno el segundo numero en numero
+		
+		while (cont == numero + 1) { // esto calcula si loss numero negativos son
+			                         // consecutivos cont -1 numero -2 = (-1=-2-1)
+			
+			System.out.println("Es consecutivo");
+			cont = numero;
+			System.out.println("Introduce un numero: ");
+			numero = keyboard.nextInt();
+			
+		}while (cont == numero - 1) {// esto calcula si loss numero negativos son
+            						 // consecutivos cont 1 numero 2 = (1= 2-1)
+			
+			System.out.println("Es consecutivo");
+			cont = numero;
+			System.out.println("Introduce un numero: ");
+			numero = keyboard.nextInt();
+		
+		}
+		System.out.println("Este numero no es consecutivo");
+	}
+
+}

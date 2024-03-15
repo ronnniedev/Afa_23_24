@@ -1,0 +1,18 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class Ejercicio12c {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		int numero;
+		int cont;
+		
+		System.out.println("Introduzca un numero: "); //introducimos los valores 
+		cont = keyboard.nextInt(); //almaceno el primer numero en cont
+		System.out.println("Introduzca un numero: ");		
+		numero = keyboard.nextInt(); //almaceno el segundo numero en numero
+	}
+
+}

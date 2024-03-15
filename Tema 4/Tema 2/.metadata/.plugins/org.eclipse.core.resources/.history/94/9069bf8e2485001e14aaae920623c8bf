@@ -1,0 +1,16 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class Ejercicio2c {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		System.out.println("Lado ");
+		int ladoP = keyboard.nextInt();
+		Libreria.areaCuadrado(ladoP);
+		
+
+	}
+
+}

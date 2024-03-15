@@ -1,0 +1,75 @@
+package ficheros;
+
+public class Libreria {
+	/**
+	 * muestra el area de un cuadrado
+	 * @param lado : entero
+	 */
+	public static void areaCuadrado(int lado) {
+		
+		int area = lado*lado;
+		System.out.println("Area cuadrado " + area);
+
+	}
+	/**
+	 * calcula el perimetro de un cuadrado
+	 * @param lado : entero
+	 * @return entero 
+	 */
+	public static int perimetroCuadrado(int lado) {
+		
+		int resul = lado * 4;
+		return resul;
+		
+	}
+	/**
+	 * calcula el area del circulo
+	 * @param r : double
+	 */
+	public static void calcularAreaCirculo (double r) {
+		
+		double resul = Math.PI*r*r;
+		System.out.println("Area :" + resul);
+		
+	}
+	/**
+	 * Calcula el perimetro del circulo
+	 * @param r : real
+	 * @return real
+	 */
+	
+	public static double perimetroCirculo (double r) {
+		
+		double resul = Math.PI*r*2;
+		return resul;
+		
+	}
+	
+	public static void factorial (int num) {
+		
+		int resul = num;
+		
+		System.out.print(num + "!=" + num + "*");
+		
+		
+		while (num != 1) {
+			
+			if (num != 2) {
+				num = num - 1;
+				System.out.print(num + "*");	
+				resul = resul * num;
+			}else {
+				num = num - 1;
+				System.out.print(num);	
+				resul = resul * num;
+				
+			}
+			
+		}
+		
+		System.out.println("= " + resul);
+		
+		
+	}
+
+}

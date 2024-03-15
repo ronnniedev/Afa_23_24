@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;ejemplos.Bucles&apos; to &apos;Bucles_03&apos;&#x0D;&#x0A;- Original project: &apos;Ejemplos_Tema_2&apos;&#x0D;&#x0A;- Original element: &apos;ejemplos.Bucles&apos;&#x0D;&#x0A;- Renamed element: &apos;ejemplos.Bucles_03&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Bucles&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;ejemplos{Bucles.java[Bucles" matchStrategy="1" name="Bucles_03" qualified="false" references="true" similarDeclarations="false" stamp="1693923603658" textual="false" version="1.0"/>
+</session>

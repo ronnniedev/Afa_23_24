@@ -1,0 +1,29 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class Ejercicio5 {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		/*Actividad 5
+		 * Implementar un función que determine si un año es bisiesto o no 
+		 */
+
+		System.out.print("Introduce un año :");
+		int year = keyboard.nextInt();
+		
+		comprobador(year);
+		
+	}
+	/**
+	 *Comprueba si el año es bisiesto o no y lo imprime en pantalla
+	 * @param year : entero
+	 */
+	public static void comprobador (int year) {
+		
+		if (((year%4==0) && (year%100!=0)) || (year%400==0))System.out.println("El año " + year + " es bisiesto ");
+		else System.out.println("El año " + year + " no es bisiesto ");
+		
+	}
+
+}

@@ -1,0 +1,33 @@
+package ficheros;
+
+import java.util.Scanner;
+
+public class Ejercicio1 {
+	static Scanner keyboard = new Scanner(System.in);
+	public static void main(String[] args) {
+		System.out.print("Introduce el numero del DNI: ");
+		int dni = keyboard.nextInt();
+		
+		boolean comprobacion = Libreria.comprobarDni (dni);
+		System.out.println(comprobacion);
+		
+		while (comprobacion == false) {
+			System.out.println("ERROR numero no valido");
+			System.out.println("Por favor introduza un valor de 8 digitos y positivo: ");
+			dni = keyboard.nextInt();
+			comprobacion = Libreria.comprobarDni (dni);
+		}
+		System.out.println("Introduce la letra de tu dni en minuscula : ");
+		char letra =keyboard.next().charAt(0);
+		System.out.println(dni);
+		
+		char letraDni = Libreria.letraDni(dni);
+		boolean dniValido = Libreria.dniValido(letra,letraDni);
+		
+		System.out.println(dniValido);
+		
+		if (dniValido) System.out.println("El numero del dni y la letra coinciden");
+		else System.out.println("El numero del dni y la letra coinciden");
+	}
+
+}

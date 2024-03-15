@@ -1,0 +1,20 @@
+package ficheros;
+
+import java.util.Scanner;
+
+/**
+ * Comprueba si el numero es valido
+ * @param dni : entero
+ * @return boolean
+ */
+public class Libreria {
+	static Scanner keyboard = new Scanner(System.in);
+	public static boolean comprobarDni(int dni) {
+		
+		boolean comprobacion = false;
+		if (dni <= 99999999 && dni > 9999999) comprobacion = true;
+		return comprobacion;
+
+	}
+
+}
