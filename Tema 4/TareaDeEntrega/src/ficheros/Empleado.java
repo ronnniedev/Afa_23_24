@@ -70,9 +70,8 @@ public class Empleado extends Persona{
 	 * @return String
 	 */
 	public String toString() {
-		return "Empleado " + id + "\n  nombre=" + nombre + "\n  apellidos=" + apellidos + "\n  nif=" + nif + "\n  telefono="
-				+ telefono + "\n  correo=" + correo + "\n  Genero=" + Genero + "\n  edad=" + edad 
-				+ "\n-----------------------------------------------------";
+		return "Empleado [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", telefono="
+				+ telefono + ", correo=" + correo + ", Genero=" + Genero + ", edad=" + edad + "]";
 	}
 
 	

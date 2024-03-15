@@ -1,5 +1,0 @@
-INDEX VERSION 1.134+C:\Users\mario\Desktop\Programas\Tema 0\.metadata\.plugins\org.eclipse.jdt.core
-1913180253.index
-1865797976.index
-84926667.index
-4218081602.index

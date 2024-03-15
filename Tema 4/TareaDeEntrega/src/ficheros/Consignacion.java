@@ -131,10 +131,10 @@ public class Consignacion {
 	}
 	@Override
 	public String toString() {
-		return "\n---------------------Consignacion " + id + "---------------------\n" + "\nConsignacion \nid="
-				+  id + "\n peso=" + peso + "\n descripcion=" + descripcion + "\n numObjetos=" + numObjetos
-				+ "\n fechaConsignacion=" + fechaConsignacion + "\n fechaSalida=" + fechaSalida 
-				+ "\n\n---------------------Cliente de " + id + "-----------------------\n" + c.toString();
+		return "\n---------------------Consignacion " + id + "---------------------\n" + "Consignacion [id="+  id + 
+				", peso=" + peso + ", descripcion=" + descripcion + ", numObjetos=" + numObjetos
+				+ ", fechaConsignacion=" + fechaConsignacion + ", fechaSalida=" + fechaSalida + "]"
+				+ "\n---------------------Cliente de " + id + "-----------------------\n" + c;
 	}
 
 

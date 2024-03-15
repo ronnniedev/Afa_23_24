@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+C:\Users\mario\OneDrive\Desktop\Clase\OneDrive\Desktop\Programas\Tema 1\Actividad 2\.metadata\.plugins\org.eclipse.jdt.core
-160595964.index
-601916445.index
-1865797976.index
