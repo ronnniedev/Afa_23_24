@@ -22,8 +22,6 @@ public class Pruebas {
 		
 		System.out.println(d.equals(f));
 		
-		
-
 	}
 	
 	public static void agregarDireccion(DireccionHttp d) {

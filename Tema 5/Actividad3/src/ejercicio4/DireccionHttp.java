@@ -14,17 +14,25 @@ public class DireccionHttp {
 		int contPuntos = 0;
 		this.servidor = "";
 		this.direccion = "";
-		
+		boolean primeraFase= false;
 		String contenedor = "";
 		
 		
 		for (int i = 0; i < direccion.length(); i++) {
-			if (contPuntos != 2) {
-				this.servidor = this.servidor + direccion.charAt(i);
+			if (!primeraFase) {
+				if (direccion.charAt(i) == 'w') {
+					primeraFase= true;
+					this.servidor = this.servidor + direccion.charAt(i);
+				}
+			}else if (contPuntos != 1){
+				System.out.print(direccion.charAt(i));
 				if (direccion.charAt(i) == ':') {
 					contPuntos++;
+				}else {
+					this.servidor = this.servidor + direccion.charAt(i);
 				}
 			}else if (puertoRecortado == false) {
+				System.out.println("2");
 				if (Character.isDigit(direccion.charAt(i)) != true) {
 					this.puerto = Integer.parseInt(contenedor);
 					this.direccion = this.direccion + '/';
