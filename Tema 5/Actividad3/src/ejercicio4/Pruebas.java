@@ -9,8 +9,8 @@ public class Pruebas {
 	
 	public static void main(String[] args) {
 		
-		DireccionHttp d = new DireccionHttp ("http://www.host.com:80/datos/fichero.txt");
-		DireccionHttp f = new DireccionHttp ("http://www.host.com:12930/datos");
+		DireccionHttp d = new DireccionHttp ("http://www.pornhub.com:80/datos/fichero.txt");
+		DireccionHttp f = new DireccionHttp ("http://www.pornhub.com:12930/datos");
 		DireccionHttp h = new DireccionHttp ("http://www.pornhub.com:90/datos");
 		
 		System.out.println(f.toString());

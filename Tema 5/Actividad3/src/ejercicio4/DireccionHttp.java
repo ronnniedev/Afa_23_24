@@ -33,7 +33,7 @@ public class DireccionHttp {
 				}
 			}else if (puertoRecortado == false) {
 				System.out.println("2");
-				if (Character.isDigit(direccion.charAt(i)) != true) {
+				if (!Character.isDigit(direccion.charAt(i))) {
 					this.puerto = Integer.parseInt(contenedor);
 					this.direccion = this.direccion + '/';
 					puertoRecortado = true;
@@ -48,8 +48,6 @@ public class DireccionHttp {
 		
 	}
 	
-	
-
 
 	@Override
 	public int hashCode() {
@@ -71,11 +69,6 @@ public class DireccionHttp {
 		System.out.println(this.servidor.compareTo(other.servidor) == 0);
 		return this.servidor.compareTo(other.servidor) == 0;
 	}
-
-
-	
-
-
 	/**
 	 * @return the servidor
 	 */
@@ -83,19 +76,12 @@ public class DireccionHttp {
 		return servidor;
 	}
 
-
-
-
 	/**
 	 * @param servidor the servidor to set
 	 */
 	public void setServidor(String servidor) {
 		this.servidor = servidor;
 	}
-
-
-
-
 	/**
 	 * @return the puerto
 	 */
