@@ -409,7 +409,7 @@ public class Pruebas {
 		
 
 		
-		Libreria.esperar(3);
+		Libreria.esperar(10);
 		
 		con.visualizarElementos();
 		
