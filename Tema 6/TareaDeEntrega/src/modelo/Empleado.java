@@ -43,6 +43,22 @@ public class Empleado extends Persona{
 		this.id = crearIdentificacion();
 		
 	}
+	
+	
+	/**
+	 * Metodo get de el atributo NUM_CREACIONES
+	 * @return the nUM_CREACIONES
+	 */
+	public static int getNUM_CREACIONES() {
+		return NUM_CREACIONES;
+	}
+	/**
+	 * Metodo set del atributo NUM_CREACIONES
+	 * @param nUM_CREACIONES the nUM_CREACIONES to set
+	 */
+	public static void setNUM_CREACIONES(int nUM_CREACIONES) {
+		NUM_CREACIONES = nUM_CREACIONES;
+	}
 	/**
 	 * Metodo get de id de clase Empleado
 	 * @return the id

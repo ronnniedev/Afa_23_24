@@ -354,7 +354,11 @@ public class Principal {
 		
 		return funciona;
 	}
-	
+	/**
+	 * Submenu para la modificacion de perfiles, te da a escoger entre las 3 clases modificables
+	 * @param con
+	 * @throws IncorrectGenderException
+	 */
 	public static void modificarPerfiles(Consigna con) throws IncorrectGenderException {
 		System.out.println("\n\n*******************");
 		System.out.println("Bienvenida al sistema de moficacion de perfiles introduzca la id del "
@@ -377,7 +381,11 @@ public class Principal {
 		}
 		
 	}
-	
+	/**
+	 * Submeno para la modificacion de clientes
+	 * @param c
+	 * @throws IncorrectGenderException
+	 */
 	public static void modificarClientes(Cliente c) throws IncorrectGenderException {
 		int opcion = -1;
 		String input = "";
@@ -465,7 +473,10 @@ public class Principal {
 			
 		}	
 	}
-	
+	/**
+	 * Modificacion que te da las opciones concretas para la modificacion de consignaciones
+	 * @param o
+	 */
 	public static void modificarConsignacion(Consignacion o){
 		int opcion = -1;
 		String input = "";
@@ -541,7 +552,12 @@ public class Principal {
 			
 		}	
 	}
-	
+	/**
+	 * Submeno que te da las opciones pertinenentes para la modificacion de empleados
+	 * 
+	 * @param e
+	 * @throws IncorrectGenderException
+	 */
 	public static void modificarEmpleados(Empleado e) throws IncorrectGenderException {
 		int opcion = -1;
 		String input = "";
@@ -641,7 +657,7 @@ public class Principal {
 							+ "-Consigna (O1,O2...)");
 		String id = keyboard.next();
 		encontrado = con.buscarElementos(id);
-		
+		 
 		if (encontrado == false) {
 			encontrado = buscarClientesMostrando(id);
 		}
@@ -680,8 +696,7 @@ public class Principal {
 	 */
 	public static Cliente buscarClientes(String id) {
 		Cliente cNew = null;
-		
-		
+	
 		for (Cliente c: clientes) {
 			if (c.getId().compareTo(id)==0) {
 				cNew = c;
@@ -754,7 +769,6 @@ public class Principal {
 			}catch(InputMismatchException e1) {
 				System.out.println("ERROR: Introduzca la cantidad de objetos con numeros enteros");
 				keyboard.nextLine();
-				
 			}
 		}
 		
@@ -791,7 +805,7 @@ public class Principal {
 			Gestion.esperar(5);
 			
 			System.out.println("\n ¡POP!");
-			eliminarCliente(localizarCliente(id));
+			eliminarCliente(id);
 		}
 		
 		if (encontrado == false) {
@@ -809,13 +823,15 @@ public class Principal {
 	 * @param Cliente : caEliminar
 	 * @return encontrado: boolean
 	 */
-	public static boolean eliminarCliente(Cliente caEliminar) {
+	public static boolean eliminarCliente(String id) {
 		boolean encontrado = false;
 		
-		System.out.println("ENCONTRADO: " + caEliminar.getId() + " sera eliminado");
-		clientes.remove(caEliminar);
-			
-		
+		if (localizarCliente(id) != null) {
+			System.out.println("ENCONTRADO: " + localizarCliente(id).getId() + " sera eliminado");
+			clientes.remove(localizarCliente(id));	
+			encontrado = true;
+		}
+	
 		return encontrado;
 	}
 	/**

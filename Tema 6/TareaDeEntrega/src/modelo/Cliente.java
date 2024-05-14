@@ -59,6 +59,14 @@ public class Cliente extends Persona{
 	public static void setNUM_CREACIONES() {
 		NUM_CREACIONES--;
 	}
+	
+	/**
+	 * Metodo set para la modificacion de la static NUM_CREACIONES
+	 * @param nUM_CREACIONES the nUM_CREACIONES to set
+	 */
+	public static void NUM_CREACIONESa0(int num) {
+		NUM_CREACIONES = num;
+	}
 
 
 

@@ -14,6 +14,8 @@ public class CargaDatos {
 	 */
 	public static void cargaDatos(Consigna con) {
 		
+		Empleado.setNUM_CREACIONES(0);
+		Cliente.NUM_CREACIONESa0(0);
 		Empleado e1 = new Empleado("Diego","De los Rios", "58799021Q", 987654321,Genero.HOMBRE,21);
 		Empleado e2 = new Empleado("Maria","Remilgos", "84937023L", 638172937,"Jaimita@gmail.com",Genero.MUJER,19);
 		Empleado e3 = new Empleado("Manuel","Franchesco", "98671223M", 692123417,Genero.HOMBRE,38);

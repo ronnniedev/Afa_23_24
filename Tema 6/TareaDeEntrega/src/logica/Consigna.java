@@ -262,13 +262,15 @@ public class Consigna {
 	 * @param telefono
 	 * @throws IncorrectLengthException
 	 */
-	public static void comprobarTelefono(int telefono) throws IncorrectLengthException {
+	public static boolean comprobarTelefono(int telefono) throws IncorrectLengthException {
 		String comprobador = Integer.toString(telefono);
-	
+		boolean correcto = false;
 		if (comprobador.length() != 9) {
 			throw new IncorrectLengthException("Error longitud Incorrecta");
+			
 		}
-		
+		correcto = true;
+		return correcto;
 	}
 	/**
 	 * Metodo que introduce una fecha concreta y , si ya no hay ninguna introducida, la cambia dentro del objeto
@@ -320,7 +322,8 @@ public class Consigna {
 	}
 	
 	/**
-	 * 
+	 * Comprueba si la longitud del dni y su letra es mayuscula, si mo lanza una excepcion 
+	 * @param dni: String
 	 */
 	public static boolean comprobarDni(String dni) {
 		boolean correcto = true;
@@ -345,7 +348,12 @@ public class Consigna {
 		
 		return correcto;
 	}
-	
+	/**
+	 * Comprueba si la edad es correcta , siendo esta dentro de un rango entre 18 y 121
+	 * @param edad
+	 * @return
+	 * @throws IncorrectAgeException
+	 */
 	public static boolean comprobarEdad(int edad) throws IncorrectAgeException {
 		boolean correcto = true;
 		

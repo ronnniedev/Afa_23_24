@@ -52,7 +52,7 @@ public abstract class Persona {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.nif = nif;
-		this.correo = " ninguno";
+		this.correo = "ninguno";
 		this.telefono = telefono;
 		this.genero = genero;
 		this.edad = edad;
