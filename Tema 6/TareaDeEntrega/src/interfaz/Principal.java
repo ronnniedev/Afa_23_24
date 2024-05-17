@@ -5,10 +5,14 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
 
+import excepciones.DateException;
+import excepciones.ErrorAtRemovingException;
 import excepciones.IncorrectAgeException;
 import excepciones.IncorrectGenderException;
 import excepciones.IncorrectLengthException;
 import excepciones.IncorrectNifException;
+import excepciones.NifYaEnListaException;
+import excepciones.NotFoundException;
 import logica.Consigna;
 import logica.Gestion;
 import modelo.Cliente;
@@ -28,8 +32,7 @@ public class Principal {
 	public static Consigna con1 = new Consigna("Con1");
 	
 	
- 	public static void main(String[] args) throws IncorrectGenderException, IncorrectNifException, IncorrectAgeException,
- 	IncorrectLengthException {
+ 	public static void main(String[] args) {
 		
 	
 		System.out.println("BIENVENIDA AL SISTEMA DE GESTION DE '" + con1.getNombre() + "'" );
@@ -87,10 +90,8 @@ public class Principal {
  	 * @throws IncorrectGenderException 
  	 * @throws IncorrectLengthException 
 	 */
-	public static void prepararEmpleado(Consigna con) throws IncorrectGenderException, IncorrectLengthException {
-	boolean correcto = false;
-	int telefono = -1;
-		
+	public static void prepararEmpleado(Consigna con) {
+
 		System.out.println("Escriba el nombre del empleado:");
 		String nombre = keyboard.next();
 		
@@ -98,17 +99,61 @@ public class Principal {
 		keyboard.nextLine();
 		String apellidos = keyboard.nextLine();
 		
-		System.out.println("Escriba el nif del empleado incluyendo la letra");
-		String nif = keyboard.next();
+		String nif = introducirNif();
 		
-		while(!Consigna.comprobarDni(nif)) {
-			nif = keyboard.next();
+		int telefono = introducirTelefono();
+		
+		System.out.println("Escriba el email del empleado");
+		String email = keyboard.next();
+		
+		System.out.println("Escriba el genero del empleado en mayusculas entre HOMBRE/MUJER: ");
+		Genero genero= introducirGenero();
+		
+		int edad = introducirEdad();
+	
+		
+		Empleado contenedor = new Empleado (nombre,apellidos,nif,telefono,email,genero,edad);
+
+		try {
+			con.añadirEmpleados(contenedor);
+			System.out.println("Empleado añadido con exito");
+		} catch (NifYaEnListaException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+			System.out.println("Volviendo al menu principal");
+		}
+		
+		
+		
+	}
+	/**
+	 * Bucle con trycatch para introducir genero
+	 * @return
+	 */
+	public static Genero introducirGenero() {
+		Genero genero = null;
+		String gender = "";
+		while (genero == null) {
+			try {
+				gender = keyboard.next();
+				genero = Consigna.comprobarGenero(gender);
+			} catch (IncorrectGenderException e) {
+				System.out.println(e.getMessage());
 			}
-		
+		}
+		return genero;
+	}
+	/**
+	 * Encapsulacion para introducir un telefono y hacer control de errores
+	 * @return
+	 */
+	public static int introducirTelefono() {
+		boolean correcto = false;
+		int telefono = -1;
 		
 		while(!correcto) {
 			try {
-				System.out.println("Escriba el telefono del empleado");
+				System.out.println("Escriba el telefono del empleado con este formato en 9 numeros XXXXXXXXX");
 				telefono = keyboard.nextInt();
 				Consigna.comprobarTelefono(telefono);
 				correcto = true;
@@ -121,21 +166,15 @@ public class Principal {
 			}
 		}
 		
-		System.out.println("Escriba el email del empleado");
-		String email = keyboard.next();
-		
-		System.out.println("Escriba el genero del empleado en mayusculas entre HOMBRE/MUJER: ");
-		String gender = keyboard.next();
-		Genero genero = Consigna.comprobarGenero(gender);
-		
-		while (genero == null) {
-			System.out.println("Genero introducido no valido introduzcalo de nuevo");
-			gender = keyboard.next();
-			genero = Consigna.comprobarGenero(gender);
-		}
-		
+		return telefono;
+	}
+	/**
+	 * Controlador para introducir una edad dentro del sistema
+	 * @return
+	 */
+	public static int introducirEdad() {
 		int edad = -1;
-		correcto = false;
+		boolean correcto = false;
 		
 		while(!correcto) {
 			try {
@@ -149,15 +188,30 @@ public class Principal {
 					
 			}catch(IncorrectAgeException e2) {
 				System.out.println(e2.getMessage());
-					
-					
+				
 			}
 		}
-			
-		Empleado contenedor = new Empleado (nombre,apellidos,nif,telefono,email,genero,edad);
-		con.añadirElementos(contenedor);
 		
-		
+		return edad;
+	}
+	/**
+	 * Controlador para introducir nif dentro del sistema
+	 * @return
+	 */
+	public static String introducirNif() {
+		System.out.println("Escriba el nif del cliente incluyendo la letra en formato 123456789M no minuscula");
+		boolean correcto = false;
+		String nif = "";
+		while (!correcto) {
+			try {
+				nif = keyboard.next();
+				correcto = Consigna.comprobarDni(nif);
+			} catch (IncorrectNifException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+		return nif;
 	}
 	
 	/**
@@ -191,10 +245,8 @@ public class Principal {
 		 * @throws IncorrectGenderException 
 		 * @throws IncorrectAgeException 
 		 */
-		public static void prepararCliente() throws IncorrectGenderException,IncorrectNifException,IncorrectAgeException {
-		boolean correcto = false;
-	
-			
+		public static void prepararCliente()  {
+		
 		System.out.println("Escriba el nombre del cliente:");
 		String nombre = keyboard.next();
 		
@@ -202,63 +254,25 @@ public class Principal {
 		keyboard.nextLine();
 		String apellidos = keyboard.nextLine();
 		
-		System.out.println("Escriba el nif del cliente incluyendo la letra");
-		String nif = keyboard.next();
+		String nif = introducirNif();
 		
-		while(!Consigna.comprobarDni(nif)) {
-			nif = keyboard.next();
-			correcto = Consigna.comprobarDni(nif);
-			}
-		int telefono = 0;
-		correcto = false;
-		while(!correcto) {
-			try {
-				System.out.println("Escriba el telefono del cliente");
-				telefono = keyboard.nextInt();
-				Consigna.comprobarTelefono(telefono);
-				correcto = true;
-			}catch(IncorrectLengthException e1){
-				System.out.println(e1.getMessage());
-			
-			}catch(InputMismatchException e2) {
-				System.out.println("ERROR: introduzca un telefono de manera numerica");
-				keyboard.nextLine();
-			}
-		}
+		int telefono = introducirTelefono();
+		
 		System.out.println("Escriba el email del cliente");
 		String email = keyboard.next();
 		
-		System.out.println("Escriba el genero del cliente en mayusculas entre HOMBRE/MUJER: ");
-		String gender = keyboard.next();
-		Genero genero = Consigna.comprobarGenero(gender);
+		System.out.println("Escriba el genero del empleado en mayusculas entre HOMBRE/MUJER: ");
+		Genero genero= introducirGenero();
 
-		while (genero == null) {
-			gender = keyboard.next();
-			genero = Consigna.comprobarGenero(gender);
-		}
-			
-		int edad = -1;
-		correcto = false;
-			
-		while(!correcto) {
-			try {
-				System.out.println("Introduzca la edad del cliente (18-120)");
-				edad = keyboard.nextInt();
-					
-				correcto = Consigna.comprobarEdad(edad);
-			}catch(InputMismatchException e1) {
-				System.out.println("Debe introducir un numero");
-				keyboard.nextLine();
-						
-			}catch(IncorrectAgeException e2) {
-				System.out.println(e2.getMessage());
-						
-				}
-			}
-	
-		Cliente contenedor = new Cliente (nombre,apellidos,nif,telefono,email,genero,edad);
-		añadirClientes(contenedor);
+		int edad = introducirEdad();
 		
+		Cliente contenedor = new Cliente (nombre,apellidos,nif,telefono,email,genero,edad);
+		
+		if (!añadirClientes(contenedor)) {
+			System.out.println("Dni de cliente ya previamente introducido, abortando introduccion, volviendo al menu");
+		}else {
+			System.out.println("Cliente añadido con exito");
+		}
 		
 	}
 	
@@ -272,13 +286,13 @@ public class Principal {
 		while (opcion != 0) {
 			switch (opcion) {
 			case 1:{
-				con.visualizarEmpleados();
+				System.out.println(con.visualizarEmpleados());
 				System.out.println("\n\nIntroduzca un caracter cualquiera para continuar: ");
 				keyboard.nextLine();
 				break;
 			}
 			case 2:{
-				con.visualizarConsignaciones();
+				System.out.println(con.visualizarConsignaciones());
 				System.out.println("\n\nIntroduzca un caracter cualquiera para continuar: ");
 				keyboard.nextLine();
 				break;
@@ -290,6 +304,7 @@ public class Principal {
 				break;
 				}
 			case 4:{
+				System.out.println("********Datos de consigna " + con.getNombre() + "********\n");
 				con.visualizarElementos();
 				System.out.println("\n\nIntroduzca un caracter cualquiera para continuar: ");
 				keyboard.nextLine();
@@ -332,12 +347,12 @@ public class Principal {
 	 * Metodo que añade clientes a un vector dentro de la clase Pruebas
 	 * @param newC
 	 */
-	public static void añadirClientes(Cliente newC) {
-		
-		if (!clientes.add(newC)) {
-			System.out.println("Cliente ya incluido en la lista");
+	public static boolean añadirClientes(Cliente newC) {
+		boolean encontrado = clientes.add(newC);
+		if (!encontrado) {
 			Cliente.setNUM_CREACIONES();
 		}
+		return encontrado;
 		
 	}
 	/**
@@ -359,7 +374,7 @@ public class Principal {
 	 * @param con
 	 * @throws IncorrectGenderException
 	 */
-	public static void modificarPerfiles(Consigna con) throws IncorrectGenderException {
+	public static void modificarPerfiles(Consigna con){
 		System.out.println("\n\n*******************");
 		System.out.println("Bienvenida al sistema de moficacion de perfiles introduzca la id del "
 							+ "registro a modificar: ");
@@ -386,10 +401,9 @@ public class Principal {
 	 * @param c
 	 * @throws IncorrectGenderException
 	 */
-	public static void modificarClientes(Cliente c) throws IncorrectGenderException {
+	public static void modificarClientes(Cliente c){
 		int opcion = -1;
 		String input = "";
-		boolean correcto = false;
 		
 		while (opcion != 0) {
 			System.out.println("*************CLIENTE************");
@@ -426,24 +440,9 @@ public class Principal {
 				break;
 			}
 			case 3:{
-				int telefono = -1;
-				try {
-				correcto = false;
-				System.out.println("Introduzca el telefono del cliente");
-				telefono = keyboard.nextInt();
-				Consigna.comprobarTelefono(telefono);
-				correcto = true;
-				}catch(IncorrectLengthException e1) {
-					System.out.println(e1.getMessage());
-				}catch(InputMismatchException e2) {
-					System.out.println("No introduzca caracteres");
-					keyboard.nextLine();
-				}
-				
-				if (correcto) {
-					c.setTelefono(telefono);
-					System.out.println("Telefono de " + c.getId() + " actualizado");
-				}
+				int telefono = introducirTelefono();
+				c.setTelefono(telefono);
+				System.out.println("Telefono de " + c.getId() + " actualizado");
 				break;
 				}
 			case 4:{
@@ -455,8 +454,7 @@ public class Principal {
 				}
 			case 5:{
 				System.out.println("Introduca el nuevo genero HOMBRE/MUJER");
-				input = keyboard.next();
-				Genero g = Consigna.comprobarGenero(input);
+				Genero g= introducirGenero();
 				if (g != null) {
 					c.setGenero(g);
 					System.out.println("Genero de " + c.getId() + "actualizado");
@@ -553,15 +551,13 @@ public class Principal {
 		}	
 	}
 	/**
-	 * Submeno que te da las opciones pertinenentes para la modificacion de empleados
-	 * 
+	 * Submenu que te da las opciones pertinenentes para la modificacion de empleados
 	 * @param e
 	 * @throws IncorrectGenderException
 	 */
-	public static void modificarEmpleados(Empleado e) throws IncorrectGenderException {
+	public static void modificarEmpleados(Empleado e) {
 		int opcion = -1;
 		String input = "";
-		boolean correcto = false;
 		
 		while (opcion != 0) {
 			System.out.println("******************EMPLEADO*********************");
@@ -598,24 +594,9 @@ public class Principal {
 				break;
 			}
 			case 3:{
-				int telefono = -1;
-				try {
-				correcto = false;
-				System.out.println("Introduzca el telefono del empleado");
-				telefono = keyboard.nextInt();
-				Consigna.comprobarTelefono(telefono);
-				correcto = true;
-				}catch(IncorrectLengthException e1) {
-					System.out.println(e1.getMessage());
-				}catch(InputMismatchException e2) {
-					System.out.println("ERROR: No introduzca caracteres, intentelo de nuevo");
-					keyboard.nextLine();
-				}
-				
-				if (correcto) {
-					e.setTelefono(telefono);
-					System.out.println("Telefono de " + e.getId() + " actualizado");
-				}
+				int telefono = introducirTelefono();
+				e.setTelefono(telefono);
+				System.out.println("Telefono de " + e.getId() + " actualizado");
 				break;
 				}
 			case 4:{
@@ -627,8 +608,7 @@ public class Principal {
 				}
 			case 5:{
 				System.out.println("Introduca el nuevo genero HOMBRE/MUJER");
-				input = keyboard.next();
-				Genero g = Consigna.comprobarGenero(input);
+				Genero g = introducirGenero();
 				if (g != null) {
 					e.setGenero(g);
 					System.out.println("Genero de " + e.getId() + "actualizado");
@@ -654,17 +634,34 @@ public class Principal {
 		
 		System.out.println("Introduce una ID para que sea buscada:\n\n"
 							+ "Ejemplos de id:\n\n"+ "-Empleado (E1,E2...)\n"+ "-Cliente (C1,C2...)\n" 
-							+ "-Consigna (O1,O2...)");
+							+ "-Consignacion (O1,O2...)");
 		String id = keyboard.next();
-		encontrado = con.buscarElementos(id);
-		 
+		
+
+		encontrado = buscarClientesMostrando(id);
+		
 		if (encontrado == false) {
-			encontrado = buscarClientesMostrando(id);
+			if (id.charAt(0) == 'O') {
+				Consignacion c = con.buscarConsignaciones(id);
+				if (c != null) {
+					System.out.println("!!!!!!ENCONTRADO!!!!!!");
+					System.out.println(c.toString());
+					encontrado = true;
+				}
+			}
 		}
 		
 		if (encontrado == false) {
-			System.out.println("No se ha encontrado ningun objeto con la id " + id);
+			if (id.charAt(0) == 'E') {
+				Empleado e = con.buscarEmpleados(id);
+				if (e != null) {
+					System.out.println("!!!!!!ENCONTRADO!!!!!!");
+					System.out.println(e.toString());
+					encontrado = true;
+				}
+			}
 		}
+		 
 		
 		
 	}
@@ -674,9 +671,8 @@ public class Principal {
 	 * @param id
 	 * @return encontrado : boolean
 	 */
-	public static boolean buscarClientesMostrando(String id) {
+	public static boolean buscarClientesMostrando(String id){
 		boolean encontrado = false;
-		
 		
 		for (Cliente c: clientes) {
 			if (c.getId().compareTo(id)==0) {
@@ -685,6 +681,7 @@ public class Principal {
 				encontrado = true;
 			} 
 		}
+		
 		return encontrado;
 	}
 	
@@ -774,7 +771,8 @@ public class Principal {
 		
 		con.añadirConsignacion(localizarCliente(id),peso,descripcion,numObjetos);
 		System.out.println("\n\n Entrada añadida\n\n Listando Consignaciones.....\n\n");
-		con.visualizarConsignaciones();
+		System.out.println(con.visualizarConsignaciones());
+
 		
 	}
 	/**
@@ -787,6 +785,7 @@ public class Principal {
 							+ "la id a eliminar");
 	
 		Gestion.esperar(3);
+		System.out.println("Datos de consigna " + con.getNombre() + "\n");
 		con.visualizarElementos();
 		System.out.println("\n\n--------------------------CLIENTES REGISTRADOS-----------------------------");
 		visualizarClientes(con);
@@ -806,16 +805,23 @@ public class Principal {
 			
 			System.out.println("\n ¡POP!");
 			eliminarCliente(id);
+			System.out.println("ENCONTRADO: " + id + " sera eliminado");
 		}
 		
 		if (encontrado == false) {
-			encontrado = con.eliminarElementos(id);
+			try {
+				encontrado = con.eliminarElementos(id);
+				if (encontrado && id.charAt(0) == 'O') {
+					System.out.println("Consignacion eliminado");
+				}else if (encontrado && id.charAt(0) == 'E') {
+					System.out.println("Empleado eliminado");
+				}
+				
+			} catch (ErrorAtRemovingException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
 		}
-		
-		if (encontrado == false) {
-			System.out.println("ID INTRODUCIDA NO VALIDA, VOLVIENDO AL MENU PRINCIPAL");
-		}
-		
 		
 	}
 	/**
@@ -827,7 +833,6 @@ public class Principal {
 		boolean encontrado = false;
 		
 		if (localizarCliente(id) != null) {
-			System.out.println("ENCONTRADO: " + localizarCliente(id).getId() + " sera eliminado");
 			clientes.remove(localizarCliente(id));	
 			encontrado = true;
 		}
@@ -842,13 +847,19 @@ public class Principal {
 		System.out.println("Escoge una consignacion a la que asignarle una fecha de extracion (si ya no ha sido"
 							+ "introducida):");
 		System.out.println("A continuacion se le muestran las consignaciones actuales: ");
-		con.visualizarConsignaciones();
+		System.out.println(con.visualizarConsignaciones());
 		System.out.println("\n Escriba la id de la fecha a actualizar");
 		String id = keyboard.next();
 		
 		if (id.charAt(0) == 'O') {
 			Id newId = new Id (id);
-			con.setFecha(newId);
+			try {
+				con.setFecha(newId);
+				System.out.println("Actualizada la fecha");
+				// hay que meter aqui que se visualize la consigna
+			} catch (DateException e) {
+				System.out.println(e.getMessage());
+			}
 		}else{
 			System.out.println("La id introducida no es valida o en su defecto es de otro registro");
 		}

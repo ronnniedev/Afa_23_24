@@ -39,6 +39,22 @@ public class Consignacion {
 
 
 	/**
+	 * @return the nUM_CONSIGNACIONES
+	 */
+	public static int getNUM_CONSIGNACIONES() {
+		return NUM_CONSIGNACIONES;
+	}
+
+
+	/**
+	 * @param nUM_CONSIGNACIONES the nUM_CONSIGNACIONES to set
+	 */
+	public static void setNUM_CONSIGNACIONES(int nUM_CONSIGNACIONES) {
+		NUM_CONSIGNACIONES = nUM_CONSIGNACIONES;
+	}
+
+
+	/**
 	 * Metodo get Peso de la clase Consignacion
 	 * @return the peso
 	 */

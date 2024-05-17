@@ -10,6 +10,10 @@ import excepciones.IncorrectAgeException;
 import excepciones.IncorrectGenderException;
 import excepciones.IncorrectLengthException;
 import excepciones.IncorrectNifException;
+import excepciones.NifYaEnListaException;
+import excepciones.NotFoundException;
+import excepciones.DateException;
+import excepciones.ErrorAtRemovingException;
 import modelo.Cliente;
 import modelo.Consignacion;
 import modelo.Empleado;
@@ -98,13 +102,12 @@ public class Consigna {
 	 */
 	public void visualizarElementos() {
 		
-		System.out.println("Datos de consigna " + nombre + "\n");
-		
 		System.out.println(toString());
 		
-		visualizarEmpleados();
-	
-		visualizarConsignaciones();
+		System.out.println(visualizarEmpleados());
+		
+		System.out.println(visualizarConsignaciones());
+		
 		
 	}
 	/**
@@ -122,26 +125,39 @@ public class Consigna {
 			
 			consignaciones.put(newC.getId(), newC);
 			numConsignaciones++;
-		}else {
-			System.err.println("ERROR al introducir la nueva consignacion");
 		}
 		
 	}
 	/**
 	 * Añade un nuevo empleado a la consigna
 	 * @param newE
+	 * @throws NifYaEnListaException 
 	 */
-	public void añadirElementos(Empleado newE) {
-		empleados.add(newE);
-		numEmpleados++;
+	public void añadirEmpleados(Empleado newE) throws NifYaEnListaException {
+		boolean metido = false;
+		
+		for (int i = 0; i < empleados.size(); i++) {
+			if (empleados.get(i).getNif().compareTo(newE.getNif())==0) {
+				metido = true;
+			}
+		}
+		
+		if (metido) {
+			throw new NifYaEnListaException("Nif de empleado ya introducido,no se añadira este empleado");
+		}else {
+			empleados.add(newE);
+			numEmpleados++;
+		}
+		
 	}
 	/**
 	 * Elimina un elemento concreto previamente habiendolo buscado, retorna un boolean para indicar si se encontro el
 	 * registro
 	 * @param idBuscar
 	 * @return boolean : encontrado
+	 * @throws ErrorAtRemovingException 
 	 */
-	public boolean eliminarElementos(String idBuscar) {
+	public boolean eliminarElementos(String idBuscar) throws ErrorAtRemovingException {
 		
 		boolean encontrado = false;
 		
@@ -149,19 +165,20 @@ public class Consigna {
 		
 		if (consignaciones.containsKey(id)){
 			consignaciones.remove(id);
-			System.out.println("Consignacion eliminada");
 			numConsignaciones--;
 			encontrado = true;
 		}
 		
 		for (int i = 0; i <empleados.size() ;i++) {
 			if (empleados.get(i).getId().compareTo(idBuscar)==0) {
-				System.out.println("Empleado eliminado");
 				empleados.remove(i);
 				numEmpleados--;
 				encontrado = true;
 			}
 			
+		}
+		if (!encontrado) {
+			throw new ErrorAtRemovingException("No se puedo eliminar,id no encontrada");
 		}
 		
 		return encontrado;
@@ -170,52 +187,26 @@ public class Consigna {
 	/**
 	 * Metodo que visualiza el vector de Empleados e[]
 	 */
-	public void visualizarEmpleados () {
-		
-		System.out.println("\n---------Empleados de " +this.getNombre()+ "---------");
+	public String visualizarEmpleados () {
+		String texto = "";
+		texto += "\n---------Empleados de " +this.getNombre()+ "---------";
 		for (int i = 0; i <empleados.size() ;i++) {
-			System.out.println(empleados.get(i).toString());
+			texto+=empleados.get(i).toString();
 		}
 		
-		
+		return texto;
 	}
 	/**
 	 * Metodo que visualiza el vector de Consignaciones c[]
 	 */
-	public void visualizarConsignaciones() {
+	public String visualizarConsignaciones() {
+		String texto = "";
 		
-		System.out.println("\n---------Consignaciones de " + this.getNombre() + "---------");
+		texto+="\n---------Consignaciones de " + this.getNombre() + "---------";
 		for (Consignacion c: consignaciones.values()) {
-			System.out.println(c.toString());
+			texto += c.toString();
 		}
-		
-		
-	}
-	/**
-	 * Metodo que busca elementos dentro de los vectores de Consignaciones y Empleados de la clase Consigna
-	 * @param id
-	 * @return boolean : encontrado
-	 */
-	public boolean buscarElementos(String id) {
-		boolean encontrado = false;
-		Id idBuscar = new Id (id);
-	
-			if (consignaciones.containsKey(idBuscar)) {
-				System.out.println("!!!!!!ENCONTRADO!!!!!!");
-				System.out.println(consignaciones.get(idBuscar));
-				encontrado = true;
-		}
-		
-		for (int i = 0; i < empleados.size();i++) {
-			if (empleados.get(i).getId().compareTo(id)== 0) {
-				System.out.println("!!!!!!ENCONTRADO!!!!!!");
-				System.out.println(empleados.get(i).toString());
-				encontrado = true;
-			}
-			
-		}	
-		
-		return encontrado;
+		return texto;
 		
 	}
 	
@@ -226,9 +217,7 @@ public class Consigna {
 	 * @return boolean : encontrado
 	 */
 	public Empleado buscarEmpleados(String id) {
-		boolean encontrado = false;
 		Empleado e = null;
-		Id idBuscar = new Id (id);
 	
 		for (int i = 0; i < empleados.size();i++) {
 			if (empleados.get(i).getId().compareTo(id)== 0) {
@@ -245,7 +234,6 @@ public class Consigna {
 	 * @return boolean : encontrado
 	 */
 	public Consignacion buscarConsignaciones(String id) {
-		boolean encontrado = false;
 		Consignacion c = null;
 		Id idBuscar = new Id (id);
 	
@@ -267,7 +255,6 @@ public class Consigna {
 		boolean correcto = false;
 		if (comprobador.length() != 9) {
 			throw new IncorrectLengthException("Error longitud Incorrecta");
-			
 		}
 		correcto = true;
 		return correcto;
@@ -276,18 +263,18 @@ public class Consigna {
 	 * Metodo que introduce una fecha concreta y , si ya no hay ninguna introducida, la cambia dentro del objeto
 	 * Consignacion
 	 * @param pos
+	 * @throws DateException 
 	 */
-	public void setFecha(Id id) {
+	public boolean setFecha(Id id) throws DateException {
 		if (consignaciones.containsKey(id)) {
 			if (consignaciones.get(id).getFechaSalida() == null) {
 				consignaciones.get(id).setFechaSalida();
-				System.out.println("Actualizada la fecha");
-				System.out.println(consignaciones.get(id).toString());
+				return true;
 			}else {
-				System.out.println("El objeto ya no esta consignado");
+				throw new DateException("El objeto ya no esta consignado");
 			}
 		}else {
-			System.out.println("Id introducida no encontrada");
+			throw new DateException("Id introducida no encontrada");
 		}
 		
 		
@@ -300,10 +287,8 @@ public class Consigna {
 	 */
 	public static Genero comprobarGenero(String gender) throws IncorrectGenderException{
 		Genero genero = null;
-		try {
 		
 		if (gender.compareTo("HOMBRE") == 0) {
-			
 			genero = Genero.HOMBRE;
 		}else if (gender.compareTo("MUJER") == 0){
 			
@@ -311,11 +296,7 @@ public class Consigna {
 		}
 		
 		if (genero == null) {
-			throw new IncorrectGenderException("ERROR: Genero mal introducido");
-		}
-		}catch(IncorrectGenderException e1) {
-			System.out.println(e1.getMessage());
-			
+			throw new IncorrectGenderException("ERROR: Genero mal introducido, introduzcalo de nuevo");
 		}
 		
 		return genero;
@@ -324,27 +305,23 @@ public class Consigna {
 	/**
 	 * Comprueba si la longitud del dni y su letra es mayuscula, si mo lanza una excepcion 
 	 * @param dni: String
+	 * @throws IncorrectNifException 
 	 */
-	public static boolean comprobarDni(String dni) {
+	public static boolean comprobarDni(String dni) throws IncorrectNifException {
 		boolean correcto = true;
 		
-		try {
-			if (dni.length() == 9 && Character.isUpperCase(dni.charAt(8))) {
-				for (int i = 0; i < 7 && correcto; i++) {
-					if (Character.isAlphabetic(dni.charAt(i))) {
-					correcto = false;
-					}
-				}
-			
-			}else {
+		
+		if (dni.length() == 9 && Character.isUpperCase(dni.charAt(8))) {
+			for (int i = 0; i < 7 && correcto; i++) {
+				if (Character.isAlphabetic(dni.charAt(i))) {
 				correcto = false;
-				throw new IncorrectNifException("ERROR: DNI Mal introducido, introduzcalo de nuevo");
+				}
 			}
-		
-		}catch(IncorrectNifException e1) {
-				System.out.println(e1.getMessage());
-			}
-		
+			
+		}else {
+			correcto = false;
+			throw new IncorrectNifException("ERROR: DNI Mal introducido, introduzcalo de nuevo");
+		}
 		
 		return correcto;
 	}

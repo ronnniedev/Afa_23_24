@@ -88,7 +88,7 @@ public class Empleado extends Persona{
 	 * @return String
 	 */
 	public String toString() {
-		return "Empleado " + id + "\nnombre=" + nombre + "\napellidos=" + apellidos + "\nnif=" + nif + "\ntelefono="
+		return "\nEmpleado " + id + "\nnombre=" + nombre + "\napellidos=" + apellidos + "\nnif=" + nif + "\ntelefono="
 				+ telefono + "\ncorreo=" + correo + "\nGenero=" + genero + "\nedad=" + edad 
 				+ "\n-----------------------------------------------------";
 	}

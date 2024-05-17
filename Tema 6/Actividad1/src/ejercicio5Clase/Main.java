@@ -1,5 +1,7 @@
 package ejercicio5Clase;
 
+import java.util.List;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -32,6 +34,40 @@ public class Main {
 			}
 		}
 		
+		try {
+			empresa.añadirDepartamento(new Departamento("dep3"));
+			empresa.añadirEmpleado("dep3",new Empleado("emp7","ape","puesto"));
+			empresa.añadirEmpleado("dep3",new Empleado("emp8","ape","puesto"));
+			empresa.añadirEmpleado("dep3",new Empleado("emp9","ape","puesto"));
+			empresa.añadirEmpleado("dep3",new Empleado("emp10","ape","puesto"));
+			}catch(DepartamentoNotFoundException e1) {
+				System.out.println(e1.toString());
+				try {
+					empresa.borrarDepartamento("dep3");
+				} catch (DepartamentoNotFoundException e) {
+					// TODO Auto-generated catch block
+					System.out.println(e.toString());
+				}
+			}
+		
+		System.out.println("****************************");
+		try {
+			List<Empleado> lista=empresa.getEmpleadosDepartamento("dep3");
+			System.out.println("****Empleados de dep3****");
+			for (int i = 0; i < lista.size(); i++) {
+				Empleado emp = lista.get(i);
+				System.out.println(emp.toString());
+			}
+		} catch (DepartamentoNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.toString());
+		}
+		
+		
+		
+		/*
+		 * 
+	
 		//*****************************
 		
 		
@@ -59,8 +95,25 @@ public class Main {
 		}
 		
 		System.out.println(empresa.toString());
+			 */
 		
-
+		System.out.println("**********************************");
+		try {
+			empresa.buscarDepartamento("dep4");
+		} catch (DepartamentoNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		
+		Empleado eBuscar;
+		try {
+			eBuscar = empresa.buscarEmpleado("emp14");
+			System.out.println("Encontrado: " + eBuscar);
+		} catch (EmpleadoNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.toString());
+		}
+		
 	}
 
 }

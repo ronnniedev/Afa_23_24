@@ -113,10 +113,46 @@ public class Empresa {
 	}
 	
 	
+	public List<Empleado> getEmpleadosDepartamento(String NombreDep) throws DepartamentoNotFoundException{
+		
+		Departamento d = null;
+		
+		for (int i = 0; i < departamentos.size() && d == null; i++) {
+			Departamento dep = departamentos.get(i);
+			if (dep.getNombre().compareTo(NombreDep)==0) {
+				d=dep;
+			} 
+		}
+		
+		if (d==null) {
+			throw new DepartamentoNotFoundException ("Departamento no encontrado");
+		}else {
+			return d.getEmpleados();
+		}
+	}
 	
-
+	public Departamento buscarDepartamento(String nombreDep) throws DepartamentoNotFoundException {
+		for (Departamento d: departamentos) {
+			if (d.getNombre().compareTo(nombreDep)== 0) {
+				return d;
+			}
+		}
+		throw new DepartamentoNotFoundException("Departamento no encontrado");
+	}
 	
-	
-	
+	public Empleado buscarEmpleado(String nombre) throws EmpleadoNotFoundException {
+		
+		for (int i = 0; i < departamentos.size(); i++) {
+			List <Empleado> empleados = departamentos.get(i).getEmpleados();
+			System.out.println(i);
+			for (int j = 0; j < empleados.size(); j++) {
+				System.out.println(empleados.get(j).toString());
+				if (empleados.get(j).getNombre().compareToIgnoreCase(nombre)== 0) {
+					return empleados.get(j);
+				}
+			}
+		}
+		throw new EmpleadoNotFoundException("No se ha encontrado al empleado");
+	}
 	
 }

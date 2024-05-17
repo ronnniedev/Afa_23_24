@@ -66,7 +66,6 @@ public abstract class Persona {
 
 	@Override
 	public boolean equals(Object obj) {
-		System.out.println("Entra");
 		if (this == obj)
 			return true;
 		if (obj == null)
